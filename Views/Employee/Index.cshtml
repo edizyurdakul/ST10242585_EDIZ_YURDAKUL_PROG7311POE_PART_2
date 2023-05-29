@@ -1,0 +1,31 @@
+﻿@model List<ST10242585_EDIZ_YURDAKUL_PROG7311POE_PART_2.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Farmers</h2>
+<link href="~/Content/TableFormat.css" rel="stylesheet">
+<table class="CustomiseTable">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var farmer in Model)
+        {
+            <tr>
+                <td>@farmer.FirstName</td>
+                <td>@farmer.LastName</td>
+                <td>@farmer.Email</td>
+                <td>
+                    @Html.ActionLink("View Products", "ViewFarmer", "Employee", new { id = farmer.UserId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

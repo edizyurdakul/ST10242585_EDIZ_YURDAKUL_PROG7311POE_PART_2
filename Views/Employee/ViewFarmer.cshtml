@@ -1,0 +1,53 @@
+﻿@model ST10242585_EDIZ_YURDAKUL_PROG7311POE_PART_2.Models.FarmerProducts
+
+<h2>Farmer Details</h2>
+
+<p>Name: @Model.User.FirstName</p>
+<p>Surname: @Model.User.LastName</p>
+
+<hr />
+
+<h3>Products</h3>
+
+@using (Html.BeginForm("ViewFarmer", "Employee", FormMethod.Get))
+{
+    <div>
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" value="@ViewBag.StartDate" />
+    </div>
+
+    <div>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" value="@ViewBag.EndDate" />
+    </div>
+
+    <div>
+        <label for="productType">Product Type:</label>
+        <input type="text" id="productType" name="productType" value="@ViewBag.ProductType" />
+    </div>
+
+    <div>
+        <input type="hidden" name="id" value="@Model.User.UserId" />
+        <input type="submit" value="Apply Filters" />
+    </div>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Product Type</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Type</td>
+                <td>@product.DateAdded.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

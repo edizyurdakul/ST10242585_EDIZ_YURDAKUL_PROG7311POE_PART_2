@@ -1,0 +1,31 @@
+﻿@using ST10242585_EDIZ_YURDAKUL_PROG7311POE_PART_2.Models
+
+@{
+    User currentUser = Session["User"] as User;
+    bool isLoggedIn = (currentUser != null);
+    bool isFarmer = (isLoggedIn && currentUser.RoleId == 2);
+}
+
+@if (isLoggedIn)
+{
+    <span>Welcome, @currentUser.FirstName @currentUser.LastName!</span>
+    if (isFarmer)
+    {
+        <span> (Farmer)</span>
+        <a href="@Url.Action("Index", "Farmer")">Products</a>
+        <a href="@Url.Action("AddProduct", "Farmer")">Add Product</a>
+        <a href="@Url.Action("Logout", "Farmer")">Logout</a>
+    }
+    else if (!isFarmer)
+    {
+        <span> (Employee)</span>
+        <a href="@Url.Action("Index", "Employee")">Farmers</a>
+        <a href="@Url.Action("AddFarmer", "Employee")">Add Farmer</a>
+        <a href="@Url.Action("Logout", "Employee")">Logout</a>
+    }
+}
+else
+{
+    <span>Welcome, Guest!</span>
+    <a href="@Url.Action("Index", "Home")">Login</a>
+}

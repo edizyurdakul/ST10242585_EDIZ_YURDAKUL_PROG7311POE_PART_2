@@ -1,0 +1,32 @@
+﻿@model ST10242585_EDIZ_YURDAKUL_PROG7311POE_PART_2.Models.FarmerProducts
+
+<h2>Welcome, @Model.User.FirstName!</h2>
+
+<p><a href="@Url.Action("AddProduct", "Farmer")">Add Product</a></p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Date Added</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Type</td>
+            <td>@product.DateAdded.ToString("yyyy-MM-dd")</td>
+            <td>@product.Price</td>
+            <td>
+                <a href="@Url.Action("EditProduct", "Farmer", new { productId = product.ProductId })">Edit</a> |
+                @using (Html.BeginForm("DeleteProduct", "Farmer", FormMethod.Post))
+                {
+                    @Html.Hidden("productId", product.ProductId)
+                    <button type="submit">Delete</button>
+                }
+            </td>
+        </tr>
+    }
+</table>

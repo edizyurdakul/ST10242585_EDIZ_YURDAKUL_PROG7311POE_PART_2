@@ -1,0 +1,23 @@
+﻿@model ST10242585_EDIZ_YURDAKUL_PROG7311POE_PART_2.Models.Product
+
+@using (Html.BeginForm("UpdateProduct", "Farmer", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.ProductId)
+
+    <div>
+        <label for="Name">Name:</label>
+        @Html.TextBoxFor(model => model.Name)
+    </div>
+
+    <div>
+        <label for="Type">Type:</label>
+        @Html.TextBoxFor(model => model.Type)
+    </div>
+
+    <div>
+        <label for="Price">Price:</label>
+        @Html.TextBoxFor(model => model.Price)
+    </div>
+
+    <button type="submit">Update</button>
+}
