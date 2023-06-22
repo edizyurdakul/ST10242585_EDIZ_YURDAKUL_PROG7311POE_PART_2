@@ -12,6 +12,7 @@ namespace ST10242585_EDIZ_YURDAKUL_PROG7311POE_PART_2
     {
         protected void Application_Start()
         {
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
